@@ -1,0 +1,8 @@
+data quality - precisao, completude, consistência, validade, exclusividade e pontualidade dos dados
+
+precisao - refletir cenários reais, mundo real, confiavel
+completude - integridade dos dados, sem perda da origem pro data lake
+consistência - os dados não podem mudar conforme eles navegam entre locais
+validade - os dados devem ser coletados de acordo com as regras e parâmetros de negocio, no formato correto e parâmetros de negocio
+exclusividade - garante que não hja duplicações de valores em todos os conjuntos de dados (camdas silver e gold)
+pontualidade - disponibilidades dos dados, sempre disponível 
