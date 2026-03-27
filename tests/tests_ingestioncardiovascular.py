@@ -91,11 +91,10 @@ class PySparkTest(unittest.TestCase):
 
     def test_fail_rename_columns(self):
         data = PySparkTest.dataframe_mock(self.spark)
-        df_invalid = data.withColumn(
-            "Weight_kg", "Weight (kg)")
-
-        with self.assertRaises(Exception):
+        df_invalid = data.drop("Weight_(kg)")
+        with self.assertRaises(ValueError) as context:
             rename_column(df_invalid)
+        self.assertIn("Weight_(kg)", str(context.exception))
 
     def test_fail_save_delta(self):
         schema = StructType([
