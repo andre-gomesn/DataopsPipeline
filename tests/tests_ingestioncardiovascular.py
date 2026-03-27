@@ -95,7 +95,7 @@ class PySparkTest(unittest.TestCase):
             "Weight_kg", "Weight (kg)")
 
         with self.assertRaises(Exception):
-            rename_columns(df_invalid)
+            rename_column(df_invalid)
 
     def test_fail_save_delta(self):
         schema = StructType([
