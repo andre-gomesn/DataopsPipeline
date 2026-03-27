@@ -76,7 +76,7 @@ class PySparkTest(unittest.TestCase):
 
     def test_rename_columns(self):
         data = PySparkTest.dataframe_mock(self.spark)
-        standardize = rename_columns(data)
+        standardize = rename_column(data)
         self.assertListEqual(standardize.columns, ["General_Health", "Checkup", "Exercise", "Heart_Disease", "Skin_Cancer", "Other_Cancer", "Depression", "Diabetes", "Arthritis", "Sex", "Age_Category", "Height_cm", "Weight_kg", "BMI", "Smoking_History", "Alcohol_Consumption", "Fruit_Consumption", "Green_Vegetables_Consumption", "FriedPotato_Consumption"])
 
     def test_save_delta(self):
