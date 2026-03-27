@@ -20,17 +20,12 @@ def read_csv(spark, path=""):
 
 def rename_column(df):
     logging.info("Renomeando coluna")
-    required_cols = ["Height_(cm)", "Weight_(kg)"]
-    missing = [col for col in required_cols if col not in df.columns]
-    if missing:
-        raise ValueError(f"Missing required columns: {missing}")
-    return df.withColumnRenamed("Height_(cm)", "Height_cm") \
-             .withColumnRenamed("Weight_(kg)", "Weight_kg")
+    return df.withColumnRenamed("Height_(cm)", "Height_cm").withColumnRenamed("Weight_(kg)", "Weight_kg")
 
 
-def save_delta(df):
+def save_delta(df, path="C:/PersonalProjects/DataopsPipeline/storage"):
     logging.info("Armazenando dados")
-    return df.write.format("delta").mode("overwrite").option("mergeSchema", True).partitionBy("General_Health").save("C:/PersonalProjects/DataopsPipeline/storage")
+    return df.write.format("delta").mode("overwrite").option("mergeSchema", True).partitionBy("General_Health").save(path)
 
 
 def main():

@@ -10,7 +10,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.x"
+          python-version: "3.12.5"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -22,5 +22,3 @@ jobs:
       - name: Run unit tests and generate coverage report
         run: |
           coverage run -m unittest -v
-          coverage report
-          coverage html
