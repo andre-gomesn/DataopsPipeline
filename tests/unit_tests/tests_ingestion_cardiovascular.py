@@ -35,7 +35,6 @@ class PySparkTest(unittest.TestCase):
         cls.spark.stop()
 
     # ate aqui boilder plate de teste
-    
     @staticmethod
     def dataframe_mock(spark):
         # montando estrutura de um dataframe pra teste
@@ -113,3 +112,4 @@ class PySparkTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    

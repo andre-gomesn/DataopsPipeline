@@ -1,12 +1,13 @@
-import logging 
+import logging
 from pyspark.sql import SparkSession
 from delta import configure_spark_with_delta_pip
+
 
 def setup_session():
     # configuracoes de extensao para funcionar
     builder = SparkSession.builder.appName("IngestaoCardio") \
-    .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
-    .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")
+        .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
+        .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")
 
     spark = configure_spark_with_delta_pip(builder).getOrCreate()
     return spark
@@ -14,7 +15,7 @@ def setup_session():
 
 def read_csv(spark, path=""):
     logging.info("Realizando leitura do arquivo")
-    return spark.read.format("csv").option("header","true").load(path)
+    return spark.read.format("csv").option("header", "true").load(path)
 
 
 def rename_column(df):
@@ -29,7 +30,7 @@ def save_delta(df):
 
 def main():
     spark = setup_session()
-    df = read_csv(spark,"C:/PersonalProjects/DataopsPipeline/data_sources/cardiovascular-diseases-risk.csv")
+    df = read_csv(spark, "C:/PersonalProjects/DataopsPipeline/data_sources/cardiovascular-diseases-risk.csv")
     df.printSchema()
     df = rename_column(df)
     # df.printSchema()
@@ -40,3 +41,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    
